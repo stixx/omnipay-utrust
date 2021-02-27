@@ -1,0 +1,20 @@
+{
+    "name": "stixx/omnipay-utrust",
+    "description": "Utrust Payments support for Omnipay payment processing library",
+    "type": "library",
+    "require": {
+        "utrust/utrust": "^1.0",
+        "omnipay/common": "^3.0"
+    },
+    "require-dev": {
+        "omnipay/tests": "^3.1",
+        "friendsofphp/php-cs-fixer": "^2.18"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jelle van Oosterbosch",
+            "email": "jelle@hypeit.nl"
+        }
+    ]
+}
