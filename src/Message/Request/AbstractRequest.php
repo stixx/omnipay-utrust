@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Omnipay\Utrust\Message;
+namespace Omnipay\Utrust\Message\Request;
 
 use Omnipay\Common\Message\AbstractResponse;
 

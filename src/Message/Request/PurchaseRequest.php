@@ -1,11 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace Omnipay\Utrust\Message;
+namespace Omnipay\Utrust\Message\Request;
 
 use Omnipay\Common\Exception\InvalidRequestException;
 use Omnipay\Common\ItemInterface;
+use Omnipay\Utrust\Message\Response\PurchaseResponse;
 
-class CreateTransactionRequest extends AbstractRequest
+class PurchaseRequest extends AbstractRequest
 {
     public function getData(): array
     {
@@ -54,7 +55,7 @@ class CreateTransactionRequest extends AbstractRequest
 
     protected function getResponseClass(): string
     {
-        // TODO: Implement getResponseClass() method.
+        return PurchaseResponse::class;
     }
 
     private function createLineItems(): array

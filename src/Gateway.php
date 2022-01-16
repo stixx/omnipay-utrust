@@ -1,23 +1,14 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Omnipay\Utrust;
 
 use Omnipay\Common\AbstractGateway;
 use Omnipay\Common\Message\RequestInterface;
-use Omnipay\Utrust\Message\CreateTransactionRequest;
+use Omnipay\Utrust\Message\Request\CompletePurchaseRequest;
+use Omnipay\Utrust\Message\Request\PurchaseRequest;
 
 /**
- * @method \Omnipay\Common\Message\NotificationInterface acceptNotification(array $options = array())
- * @method \Omnipay\Common\Message\RequestInterface completeAuthorize(array $options = array())
- * @method \Omnipay\Common\Message\RequestInterface capture(array $options = array())
- * @method \Omnipay\Common\Message\RequestInterface purchase(array $options = array())
- * @method \Omnipay\Common\Message\RequestInterface completePurchase(array $options = array())
- * @method \Omnipay\Common\Message\RequestInterface refund(array $options = array())
- * @method \Omnipay\Common\Message\RequestInterface fetchTransaction(array $options = [])
- * @method \Omnipay\Common\Message\RequestInterface void(array $options = array())
- * @method \Omnipay\Common\Message\RequestInterface createCard(array $options = array())
- * @method \Omnipay\Common\Message\RequestInterface updateCard(array $options = array())
- * @method \Omnipay\Common\Message\RequestInterface deleteCard(array $options = array())
+ *  Utrust gateway for Omnipay
  */
 class Gateway extends AbstractGateway
 {
@@ -34,8 +25,13 @@ class Gateway extends AbstractGateway
         ];
     }
 
-    public function authorize(array $parameters = []): RequestInterface
+    public function purchase(array $parameters = []): RequestInterface
     {
-        return $this->createRequest(CreateTransactionRequest::class, $parameters);
+        return $this->createRequest(PurchaseRequest::class, $parameters);
+    }
+
+    public function completePurchase(array $parameters = array()): RequestInterface
+    {
+        return $this->createRequest(CompletePurchaseRequest::class, $parameters);
     }
 }
