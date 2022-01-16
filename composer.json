@@ -11,9 +11,9 @@
     ],
     "type": "library",
     "require": {
-        "php": "^7.3",
+        "php": "^7.4",
         "omnipay/common": "^3.0",
-        "ext-json": "^1.7"
+        "ext-json": "*"
     },
     "require-dev": {
         "omnipay/tests": "^3.1",
@@ -23,7 +23,7 @@
     "authors": [
         {
             "name": "Jelle van Oosterbosch",
-            "email": "jelle@hypeit.nl"
+            "email": "info@celer-it.nl"
         }
     ],
     "autoload": {
