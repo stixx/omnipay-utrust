@@ -6,17 +6,17 @@ use Omnipay\Common\Message\AbstractResponse;
 
 abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 {
-    protected $testEndpoint = 'https://merchants.api.sandbox-utrust.com/api/';
-    protected $liveEndpoint = 'https://merchants.api.utrust.com/api/';
+    protected string $testEndpoint = 'https://merchants.api.sandbox-utrust.com/api/';
+    protected string $liveEndpoint = 'https://merchants.api.utrust.com/api/';
 
     public function getApiKey(): string
     {
         return $this->getParameter('apiKey');
     }
 
-    public function setApiKey(string $value): void
+    public function setApiKey(string $value): self
     {
-        $this->setParameter('apiKey', $value);
+        return $this->setParameter('apiKey', $value);
     }
 
     public function getHttpMethod(): string
@@ -30,7 +30,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
             $this->getHttpMethod(),
             $this->getEndPoint().$this->getPath(),
             $this->getHeaders(),
-            $data
+            json_encode($data)
         );
 
         $responseBody = json_decode($response->getBody()->getContents(), true);
@@ -41,7 +41,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     protected function getHeaders(): array
     {
         return [
-            'Authorization' => 'Basic ' . base64_encode($this->getApiKey()) . ':',
+            'Authorization' => 'Bearer ' . $this->getApiKey(),
             'Content-Type' => 'application/json',
         ];
     }

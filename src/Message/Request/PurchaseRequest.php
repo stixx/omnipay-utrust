@@ -33,9 +33,7 @@ class PurchaseRequest extends AbstractRequest
                             'cancel_url' => $this->getCancelUrl(),
                             'callback_url' => $this->getNotifyUrl(),
                         ],
-                        'line_items' => [
-                            $this->createLineItems(),
-                        ],
+                        'line_items' => $this->createLineItems(),
                     ],
                     'customer' => [
                         'first_name' => $card->getFirstName(),
@@ -66,7 +64,7 @@ class PurchaseRequest extends AbstractRequest
         foreach ($this->getItems() as $item) {
             $items[] = [
                 'name' => $item->getName(),
-                'price' => $item->getPrice(),
+                'price' => number_format($item->getPrice(), 2),
                 'currency' => $this->getCurrency(),
                 'quantity' => $item->getQuantity(),
             ];

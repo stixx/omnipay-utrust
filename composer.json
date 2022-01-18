@@ -30,5 +30,13 @@
         "psr-4": {
             "Omnipay\\Utrust\\": "src/"
         }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Omnipay\\Utrust\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
     }
 }
