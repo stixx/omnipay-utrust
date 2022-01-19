@@ -9,16 +9,6 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     protected string $testEndpoint = 'https://merchants.api.sandbox-utrust.com/api/';
     protected string $liveEndpoint = 'https://merchants.api.utrust.com/api/';
 
-    public function getApiKey(): string
-    {
-        return $this->getParameter('apiKey');
-    }
-
-    public function setApiKey(string $value): self
-    {
-        return $this->setParameter('apiKey', $value);
-    }
-
     public function getHttpMethod(): string
     {
         return 'POST';
@@ -57,5 +47,15 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         }
 
         return $this->liveEndpoint;
+    }
+
+    public function getApiKey(): string
+    {
+        return $this->getParameter('apiKey');
+    }
+
+    public function setApiKey(string $value): self
+    {
+        return $this->setParameter('apiKey', $value);
     }
 }

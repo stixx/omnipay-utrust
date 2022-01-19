@@ -34,4 +34,14 @@ class Gateway extends AbstractGateway
     {
         return $this->createRequest(CompletePurchaseRequest::class, $parameters);
     }
+
+    public function getApiKey(): string
+    {
+        return $this->getParameter('apiKey');
+    }
+
+    public function setApiKey(string $value): self
+    {
+        return $this->setParameter('apiKey', $value);
+    }
 }
