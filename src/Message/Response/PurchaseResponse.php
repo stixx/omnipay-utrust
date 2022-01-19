@@ -4,8 +4,8 @@ namespace Omnipay\Utrust\Message\Response;
 
 class PurchaseResponse extends AbstractResponse
 {
-    public function isSuccessful()
+    public function isRedirect(): bool
     {
-        // TODO: Implement isSuccessful() method.
+        return isset($this->data['data']['attributes']['redirect_url']) ?? false;
     }
 }
