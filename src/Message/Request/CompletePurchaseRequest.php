@@ -4,18 +4,18 @@ namespace Omnipay\Utrust\Message\Request;
 
 class CompletePurchaseRequest extends AbstractRequest
 {
-    public function getData()
+    public function getData(): array
     {
-        // TODO: Implement getData() method.
+        return [];
     }
 
     protected function getPath(): ?string
     {
-        // TODO: Implement getPath() method.
+        return null;
     }
 
     protected function getResponseClass(): string
     {
-        // TODO: Implement getResponseClass() method.
+        return '';
     }
 }
