@@ -6,6 +6,6 @@ class CompletePurchaseResponse extends AbstractResponse
 {
     public function isSuccessful(): bool
     {
-        // TODO: Implement isSuccessful() method.
+        return false;
     }
 }
