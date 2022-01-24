@@ -39,17 +39,13 @@ jobs:
             -   name: Install dependencies
                 run: composer install --prefer-dist
 
-            -   name: Run PHPUnit
-                run: vendor/bin/phpunit
+            -   name: Run PHPUnit + code coverage
+                run: |
+                    vendor/bin/phpunit --coverage-clover clover.xml
+                    vendor/bin/coverage-check clover.xml 80
 
             -   name: Run PHP CS Fixer
                 run: vendor/bin/php-cs-fixer fix src --dry-run --allow-risky=yes
 
             -   name: Run PHPStan
                 run: phpstan analyse src
-
-            -   name: Check minimal code coverage
-                run: |
-                    vendor/bin/phpunit --coverage-clover clover.xml
-                    vendor/bin/coverage-check clover.xml 80
-                    vendor/bin/coverage-check clover.xml 80 --only-percentage
