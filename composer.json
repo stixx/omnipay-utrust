@@ -17,7 +17,8 @@
     },
     "require-dev": {
         "omnipay/tests": "^4.1",
-        "friendsofphp/php-cs-fixer": "^3.0"
+        "friendsofphp/php-cs-fixer": "^3.0",
+        "rregeer/phpunit-coverage-check": "^0.3.1"
     },
     "license": "MIT",
     "authors": [
