@@ -1,10 +1,19 @@
 {
     "name": "stixx/omnipay-utrust",
     "description": "Utrust Payments support for Omnipay payment processing library",
+    "keywords": [
+        "gateway",
+        "merchant",
+        "omnipay",
+        "pay",
+        "payment",
+        "utrust"
+    ],
     "type": "library",
     "require": {
-        "utrust/utrust": "^1.0",
-        "omnipay/common": "^3.0"
+        "php": "^7.4",
+        "omnipay/common": "^3.0",
+        "ext-json": "*"
     },
     "require-dev": {
         "omnipay/tests": "^3.1",
@@ -14,7 +23,20 @@
     "authors": [
         {
             "name": "Jelle van Oosterbosch",
-            "email": "jelle@hypeit.nl"
+            "email": "info@celer-it.nl"
         }
-    ]
+    ],
+    "autoload": {
+        "psr-4": {
+            "Omnipay\\Utrust\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Omnipay\\Utrust\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    }
 }
