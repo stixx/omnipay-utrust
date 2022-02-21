@@ -4,10 +4,11 @@ $finder = PhpCsFixer\Finder::create()
     ->in(__DIR__)
     ->exclude([
         'vendor',
-    ]);
+    ])
+;
 
-return PhpCsFixer\Config::create()
-    ->setRules([
+$config = new PhpCsFixer\Config();
+return $config->setRules([
         'declare_strict_types' => true,
         'ordered_class_elements' => [
             'order' => [
@@ -26,6 +27,7 @@ return PhpCsFixer\Config::create()
             ],
         ],
         'ordered_imports' => true,
-        'yoda_style' => null,
+        'yoda_style' => false,
     ])
-    ->setFinder($finder);
+    ->setFinder($finder)
+;

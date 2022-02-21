@@ -11,13 +11,14 @@
     ],
     "type": "library",
     "require": {
-        "php": "^7.4",
+        "php": "^7.4|^8.0",
         "omnipay/common": "^3.0",
         "ext-json": "*"
     },
     "require-dev": {
-        "omnipay/tests": "^3.1",
-        "friendsofphp/php-cs-fixer": "^2.18"
+        "omnipay/tests": "^4.1",
+        "friendsofphp/php-cs-fixer": "^3.0",
+        "rregeer/phpunit-coverage-check": "^0.3.1"
     },
     "license": "MIT",
     "authors": [

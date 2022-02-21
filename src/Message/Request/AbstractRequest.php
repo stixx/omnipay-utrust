@@ -29,6 +29,16 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         return new $responseClass($this, $responseBody);
     }
 
+    public function getApiKey(): string
+    {
+        return $this->getParameter('apiKey');
+    }
+
+    public function setApiKey(string $value): self
+    {
+        return $this->setParameter('apiKey', $value);
+    }
+
     protected function getHeaders(): array
     {
         return [
@@ -47,15 +57,5 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         }
 
         return $this->liveEndpoint;
-    }
-
-    public function getApiKey(): string
-    {
-        return $this->getParameter('apiKey');
-    }
-
-    public function setApiKey(string $value): self
-    {
-        return $this->setParameter('apiKey', $value);
     }
 }
