@@ -42,10 +42,10 @@ jobs:
             -   name: Run PHPUnit + code coverage
                 run: |
                     vendor/bin/phpunit --coverage-clover clover.xml
-                    vendor/bin/coverage-check clover.xml 80
+                    vendor/bin/coverage-check clover.xml 20
 
             -   name: Run PHP CS Fixer
-                run: vendor/bin/php-cs-fixer fix src --dry-run --allow-risky=yes
+                run: vendor/bin/php-cs-fixer fix src --dry-run --allow-risky=yes --format=checkstyle | cs2pr
 
             -   name: Run PHPStan
-                run: phpstan analyse src
+                run: phpstan analyse src | cs2pr
