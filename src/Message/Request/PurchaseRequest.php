@@ -3,7 +3,7 @@
 namespace Omnipay\Utrust\Message\Request;
 
 use Omnipay\Common\Exception\InvalidRequestException;
-use Omnipay\Common\ItemInterface;
+use Omnipay\Utrust\LineItem;
 use Omnipay\Utrust\Message\Response\PurchaseResponse;
 
 class PurchaseRequest extends AbstractRequest
@@ -11,12 +11,7 @@ class PurchaseRequest extends AbstractRequest
     public function getData(): array
     {
         $card = $this->getCard();
-
-        if (!preg_match('/^[A-Z]{2}$/', $card->getBillingCountry())) {
-            throw new InvalidRequestException(
-                'Billing country must be an ISO-3166 two-digit code.'
-            );
-        }
+        $this->guardBillingCountry($card->getBillingCountry());
 
         return [
             'data' => [
@@ -60,16 +55,19 @@ class PurchaseRequest extends AbstractRequest
     {
         $items = [];
 
-        /** @var ItemInterface $item */
         foreach ($this->getItems() as $item) {
-            $items[] = [
-                'name' => $item->getName(),
-                'price' => number_format($item->getPrice(), 2),
-                'currency' => $this->getCurrency(),
-                'quantity' => $item->getQuantity(),
-            ];
+            $items[] = LineItem::fromItem($item, $this->getCurrency())->toArray();
         }
 
         return $items;
+    }
+
+    private function guardBillingCountry(string $billingCountry): void
+    {
+        if (!preg_match('/^[a-zA-Z]{2}$/', $billingCountry)) {
+            throw new InvalidRequestException(
+                sprintf('Billing country "%s" must be an ISO-3166 two-digit code.', $billingCountry)
+            );
+        }
     }
 }
